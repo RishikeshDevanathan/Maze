@@ -7,7 +7,7 @@ public class DrawingSurface extends PApplet
 
     public DrawingSurface()
     {
-        maze = new Maze(500, 500, 10, 10);
+        maze = new Maze(500, 500, 20, 20);
     }
 
     public void draw()

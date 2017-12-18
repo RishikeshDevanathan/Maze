@@ -15,15 +15,32 @@ public class Maze
         float tileWidth = width / numCols;
         float tileHeight = height / numRows;
         tiles = new Tile[numRows][numCols];
-        fillTilesArray(tileWidth, tileHeight, numRows, numCols);
+        
+        MazeGenerator generator = new MazeGenerator(numRows + 1, numCols + 1);
+        generator.generate();
+        
+        fillTilesArray(tileWidth, tileHeight, numRows, numCols, generator.getMaz());
+
     }
 
     private void fillTilesArray(float tileWidth, float tileHeight, int numRows, int numCols)
     {
         for (int i = 0; i < numRows; i++)
             for (int j = 0; j < numCols; j++)
-                tiles[i][j] = new Tile(ORIGIN_X + (i * tileWidth),
-                        ORIGIN_Y + (j * tileHeight), tileWidth, tileHeight);
+                tiles[i][j] = new Tile(ORIGIN_X + (i * tileWidth), ORIGIN_Y + (j * tileHeight), tileWidth, tileHeight);
+
+    }
+    
+    private void fillTilesArray(float tileWidth, float tileHeight, int numRows, int numCols, char[][] map)
+    {
+        for (int i = 0; i < numRows; i++)
+            for (int j = 0; j < numCols; j++)
+            {
+                tiles[i][j] = new Tile(ORIGIN_X + (i * tileWidth), ORIGIN_Y + (j * tileHeight), tileWidth, tileHeight);
+                
+                if (map[i + 1][j + 1] == '.')
+                    tiles[i][j].setIsWall(false);
+            }
 
     }
 
@@ -40,8 +57,7 @@ public class Maze
             }
         }
         marker.popStyle();
-        
-        
+
     }
 
     public int getNumRows()
@@ -63,7 +79,7 @@ public class Maze
     {
         this.numCols = numCols;
     }
-    
+
     public Tile[][] getTiles()
     {
         return tiles;
@@ -73,6 +89,5 @@ public class Maze
     {
         this.tiles = tiles;
     }
-
 
 }
