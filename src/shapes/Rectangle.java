@@ -116,7 +116,7 @@ public class Rectangle extends Shape
         super.draw(drawer);
 
         drawer.rectMode(PApplet.CORNER);
-        drawer.rect((float) x, (float) y, (float) (x + width), (float) (y + height));
+        drawer.rect((float) x, (float) y, (float) (width), (float) (height));
     }
     
     public double getWidth()
