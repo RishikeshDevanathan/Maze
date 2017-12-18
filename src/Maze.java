@@ -3,11 +3,15 @@ import processing.core.PApplet;
 public class Maze
 {
     private Tile[][] tiles;
-    private final float ORIGIN_X = (float) 0;
-    private final float ORIGIN_Y = (float) 0;
+    private final float ORIGIN_X = 0;
+    private final float ORIGIN_Y = 0;
+    private int numRows;
+    private int numCols;
 
     public Maze(float width, float height, int numRows, int numCols)
     {
+        this.setNumRows(numRows);
+        this.setNumCols(numCols);
         float tileWidth = width / numCols;
         float tileHeight = height / numRows;
         tiles = new Tile[numRows][numCols];
@@ -30,14 +34,45 @@ public class Maze
         {
             for (int j = 0; j < tiles[i].length; j++)
             {
-                tiles[i][j].draw(marker);
-                
-                if (tiles[i][j].isPointInside(marker.mouseX, marker.mouseY) && marker.mousePressed)
-                    tiles[i][j].setFillColor(0);
+                Tile element = tiles[i][j];
+                element.draw(marker);
+
             }
         }
         marker.popStyle();
         
         
     }
+
+    public int getNumRows()
+    {
+        return numRows;
+    }
+
+    public void setNumRows(int numRows)
+    {
+        this.numRows = numRows;
+    }
+
+    public int getNumCols()
+    {
+        return numCols;
+    }
+
+    public void setNumCols(int numCols)
+    {
+        this.numCols = numCols;
+    }
+    
+    public Tile[][] getTiles()
+    {
+        return tiles;
+    }
+
+    public void setTiles(Tile[][] tiles)
+    {
+        this.tiles = tiles;
+    }
+
+
 }
