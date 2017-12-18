@@ -1,13 +1,17 @@
 
 import processing.core.PApplet;
 
-public class DrawingSurface extends PApplet {
-	private Maze maze;
-    public DrawingSurface() {
-        maze = new Maze(0, 0, 400, 400, 10, 10);
+public class DrawingSurface extends PApplet
+{
+    private Maze maze;
+
+    public DrawingSurface()
+    {
+        maze = new Maze((float) 500, (float) 500, 20, 20);
     }
 
-    public void draw() {
+    public void draw()
+    {
         background(255);
         maze.draw(this);
     }
