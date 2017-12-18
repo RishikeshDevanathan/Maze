@@ -1,36 +1,44 @@
 import processing.core.PApplet;
 import shapes.*;
 
-public class Tile extends Rectangle
-{
-    private boolean isWall = true;
-    
-    public Tile(float x, float y, float width, float height)
-    {
-        super(x, y, width, height);
-    }
+public class Tile extends Rectangle {
+	private boolean isWall = true;
+	private boolean beginning = false;
+	private boolean end = false;
 
-    public void draw(PApplet marker)
-    {
-        marker.pushStyle();
-        
-        if (isWall)
-            this.setFillColor(0);
-        else
-            this.setFillColor(255);
-        
-        super.draw(marker);
-        marker.popStyle();
-    }
+	public Tile(float x, float y, float width, float height) {
+		super(x, y, width, height);
+	}
 
-    public boolean isWall()
-    {
-        return isWall;
-    }
+	public void draw(PApplet marker) {
+		marker.pushStyle();
 
-    public void setIsWall(boolean isWall)
-    {
-        this.isWall = isWall;
-    }
-    
+		if (beginning)
+			this.setFillColor(200);
+		else if (end)
+			this.setFillColor(100);
+		else if (isWall)
+			this.setFillColor(0);
+		else
+			this.setFillColor(255);
+		
+		super.draw(marker);
+		marker.popStyle();
+	}
+
+	public boolean isWall() {
+		return isWall;
+	}
+
+	public void setIsWall(boolean isWall) {
+		this.isWall = isWall;
+	}
+	
+	public void setBeginning(boolean beginning) {
+		this.beginning = beginning;
+	}
+	
+	public void setEnd(boolean end) {
+		this.end = end;
+	}
 }
