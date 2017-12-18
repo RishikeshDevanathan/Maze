@@ -4,7 +4,9 @@ import shapes.*;
 public class Tile extends Rectangle
 {
     private boolean isWall = true;
-    
+    private boolean beginning = false;
+    private boolean end = false;
+
     public Tile(float x, float y, float width, float height)
     {
         super(x, y, width, height);
@@ -13,12 +15,16 @@ public class Tile extends Rectangle
     public void draw(PApplet marker)
     {
         marker.pushStyle();
-        
-        if (isWall)
+
+        if (beginning)
+            this.setFillColor(50);
+        else if (end)
+            this.setFillColor(100);
+        else if (isWall)
             this.setFillColor(0);
         else
             this.setFillColor(255);
-        
+
         super.draw(marker);
         marker.popStyle();
     }
@@ -31,5 +37,15 @@ public class Tile extends Rectangle
     public void setIsWall(boolean isWall)
     {
         this.isWall = isWall;
+    }
+
+    public void setBeginning(boolean beginning)
+    {
+        this.beginning = beginning;
+    }
+
+    public void setEnd(boolean end)
+    {
+        this.end = end;
     }
 }
