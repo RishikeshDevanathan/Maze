@@ -3,8 +3,8 @@ import processing.core.PApplet;
 public class Maze
 {
     private Tile[][] tiles;
-    private final float ORIGIN_X = 0;
-    private final float ORIGIN_Y = 0;
+    private final float ORIGIN_X = 50;
+    private final float ORIGIN_Y = 50;
     private int numRows;
     private int numCols;
 

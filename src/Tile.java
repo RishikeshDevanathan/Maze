@@ -3,7 +3,7 @@ import shapes.*;
 
 public class Tile extends Rectangle
 {
-    private boolean isWall = false;
+    private boolean isWall = true;
     
     public Tile(float x, float y, float width, float height)
     {
@@ -32,4 +32,5 @@ public class Tile extends Rectangle
     {
         this.isWall = isWall;
     }
+    
 }
