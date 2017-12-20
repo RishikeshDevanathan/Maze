@@ -1,7 +1,8 @@
 import processing.core.PApplet;
 import shapes.*;
 
-public class Tile extends Rectangle {
+public class Tile extends Rectangle
+{
     private boolean isWall = true;
     private boolean beginning = false;
     private boolean end = false;

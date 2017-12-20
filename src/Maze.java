@@ -1,6 +1,7 @@
 import processing.core.PApplet;
 
-public class Maze {
+public class Maze
+{
     private Tile[][] tiles;
     private final float ORIGIN_X = 50;
     private final float ORIGIN_Y = 50;
@@ -9,7 +10,8 @@ public class Maze {
     private int numRows;
     private int numCols;
 
-    public Maze(float width, float height, int numRows, int numCols) {
+    public Maze(float width, float height, int numRows, int numCols)
+    {
         this.setNumRows(numRows);
         this.setNumCols(numCols);
         this.width = width;
@@ -46,7 +48,7 @@ public class Maze {
                     tiles[i][j].setBeginning(true);
                 else if (map[i + 1][j + 1] == 'E')
                     tiles[i][j].setBeginning(true);
-                
+
             }
 
     }
@@ -58,6 +60,7 @@ public class Maze {
         {
             for (int j = 0; j < tiles[i].length; j++)
             {
+
                 Tile element = tiles[i][j];
                 element.draw(marker);
 
@@ -67,14 +70,16 @@ public class Maze {
 
     }
 
-    public double getX() {
-    		return ORIGIN_X;
+    public double getX()
+    {
+        return ORIGIN_X;
     }
-    
-    public double getY() {
-		return ORIGIN_Y;
+
+    public double getY()
+    {
+        return ORIGIN_Y;
     }
-    
+
     public int getNumRows()
     {
         return numRows;
@@ -95,14 +100,16 @@ public class Maze {
         this.numCols = numCols;
     }
 
-    public double getWidth() {
-    		return width;
+    public double getWidth()
+    {
+        return width;
     }
-    
-    public double getHeight() {
-		return height;
+
+    public double getHeight()
+    {
+        return height;
     }
-    
+
     public Tile[][] getTiles()
     {
         return tiles;

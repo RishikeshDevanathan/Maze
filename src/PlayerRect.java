@@ -16,7 +16,6 @@ public class PlayerRect extends Rectangle {
 		return (int) super.getWidth();
 	}
 	
-	
 	public void draw(PApplet drawer) {
 		super.draw(drawer);
 	}
