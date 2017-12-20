@@ -1,8 +1,7 @@
 import processing.core.PApplet;
 import shapes.*;
 
-public class Tile extends Rectangle
-{
+public class Tile extends Rectangle {
     private boolean isWall = true;
     private boolean beginning = false;
     private boolean end = false;
@@ -17,9 +16,9 @@ public class Tile extends Rectangle
         marker.pushStyle();
 
         if (beginning)
-            this.setFillColor(50);
+            this.setFillColor(175);
         else if (end)
-            this.setFillColor(100);
+            this.setFillColor(75);
         else if (isWall)
             this.setFillColor(0);
         else

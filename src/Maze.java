@@ -1,17 +1,19 @@
 import processing.core.PApplet;
 
-public class Maze
-{
+public class Maze {
     private Tile[][] tiles;
     private final float ORIGIN_X = 50;
     private final float ORIGIN_Y = 50;
+    private float width;
+    private float height;
     private int numRows;
     private int numCols;
 
-    public Maze(float width, float height, int numRows, int numCols)
-    {
+    public Maze(float width, float height, int numRows, int numCols) {
         this.setNumRows(numRows);
         this.setNumCols(numCols);
+        this.width = width;
+        this.height = height;
         float tileWidth = width / numCols;
         float tileHeight = height / numRows;
         tiles = new Tile[numRows][numCols];
@@ -65,6 +67,14 @@ public class Maze
 
     }
 
+    public double getX() {
+    		return ORIGIN_X;
+    }
+    
+    public double getY() {
+		return ORIGIN_Y;
+    }
+    
     public int getNumRows()
     {
         return numRows;
@@ -85,6 +95,14 @@ public class Maze
         this.numCols = numCols;
     }
 
+    public double getWidth() {
+    		return width;
+    }
+    
+    public double getHeight() {
+		return height;
+    }
+    
     public Tile[][] getTiles()
     {
         return tiles;

@@ -1,28 +1,37 @@
 
 import processing.core.PApplet;
 
-public class DrawingSurface extends PApplet {
+public class DrawingSurfaceRect extends PApplet {
 
     private Maze maze;
-    private PlayerCirc playerC;
+    private PlayerRect playerR;
     
     private boolean[] keys = new boolean[6];
-
-    public DrawingSurface()
+    
+    /*	Set player's original tile to beginning tile
+     * 	Fix canMove() and stuff
+     * 
+     * 
+     */
+    
+    public DrawingSurfaceRect()
     {
-        maze = new Maze(500, 500, 50, 50);
-        playerC = new PlayerCirc();
+        maze = new Maze(500, 500, 10, 10);
+        playerR = new PlayerRect((int) (maze.getX()), (int) (maze.getY()), 50, 50);
     }
 
     public void draw()
     {
         background(255);
         
+        playerR.setWidth(maze.getWidth() / maze.getNumCols());
+        playerR.setHeight(maze.getHeight() / maze.getNumRows());
+        
         act();
-        playerBoundary();
+        playerRBoundary();
         
         maze.draw(this);
-        playerC.draw(this);
+        playerR.draw(this);
         
         if (mousePressed)
             check();
@@ -98,48 +107,48 @@ public class DrawingSurface extends PApplet {
 		}
     }
     
-    int speed = 4;
+    int speed = 5;
     public void act() {
-    		if (keys[2]) {
-    			playerC.setX(playerC.getX() - speed);
+    		if (keys[2] && canMove()) {
+    			playerR.setX(playerR.getX() - speed);
     		}
-    		else if (keys[3]) {
-    			playerC.setY(playerC.getY() - speed);
+    		else if (keys[3] && canMove()) {
+    			playerR.setY(playerR.getY() - speed);
     		}
-    		else if (keys[4]) {
-    			playerC.setX(playerC.getX() + speed);
+    		else if (keys[4] && canMove()) {
+    			playerR.setX(playerR.getX() + speed);
     		}
-    		else if (keys[5]) {
-    			playerC.setY(playerC.getY() + speed);
+    		else if (keys[5] && canMove()) {
+    			playerR.setY(playerR.getY() + speed);
     		}
     }
 
-//    public boolean canMove() {
-//    	for (int i = 0; i < maze.getTiles().length; i++) {
-//    		for (int j = 0; j < maze.getTiles()[i].length; j++) {
-//    			Tile element = maze.getTiles()[i][j];
-//    			if (element.overlaps(playerR) == true) {
-//    				if (element.isWall() == false) {
-//    					return true;
-//    				}
-//    			}
-//    		}
-//    	}
-//    	return false;
-//    }
+    public boolean canMove() {
+    	for (int i = 0; i < maze.getTiles().length; i++) {
+    		for (int j = 0; j < maze.getTiles()[i].length; j++) {
+    			Tile element = maze.getTiles()[i][j];
+    			if (element.overlaps(playerR) == true) {
+    				if (element.isWall() == false) {
+    					return true;
+    				}
+    			}
+    		}
+    	}
+    	return false;
+    }
     
-    public void playerBoundary() {
-		if (playerC.getX() - playerC.getR() < maze.getX()) {
-			playerC.setX((int) (maze.getX() + playerC.getR()));
+    public void playerRBoundary() {
+		if (playerR.getX() < maze.getX()) {
+			playerR.setX((int) (maze.getX()));
 		}
-		if (playerC.getX() + playerC.getR() > maze.getX() + maze.getWidth()) {
-			playerC.setX((int) (maze.getX() + maze.getWidth() - playerC.getR()));
+		if (playerR.getX() + playerR.getR() > maze.getX() + maze.getWidth()) {
+			playerR.setX((int) (maze.getX() + maze.getWidth() - playerR.getR()));
 		}
-		if (playerC.getY() - playerC.getR() < maze.getY()) {
-			playerC.setY((int) (maze.getY() + playerC.getR()));
+		if (playerR.getY() < maze.getY()) {
+			playerR.setY((int) (maze.getY()));
 		}
-		if (playerC.getY() + playerC.getR() > maze.getY() + maze.getHeight()) {
-			playerC.setY((int) (maze.getY() + maze.getHeight() - playerC.getR()));
+		if (playerR.getY() + playerR.getR() > maze.getY() + maze.getHeight()) {
+			playerR.setY((int) (maze.getY() + maze.getHeight() - playerR.getR()));
 		}
 	}
 
