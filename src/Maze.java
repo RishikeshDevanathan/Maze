@@ -47,7 +47,7 @@ public class Maze
                 else if (map[i + 1][j + 1] == 'S')
                     tiles[i][j].setBeginning(true);
                 else if (map[i + 1][j + 1] == 'E')
-                    tiles[i][j].setBeginning(true);
+                    tiles[i][j].setEnd(true);
 
             }
 
@@ -60,7 +60,6 @@ public class Maze
         {
             for (int j = 0; j < tiles[i].length; j++)
             {
-
                 Tile element = tiles[i][j];
                 element.draw(marker);
 

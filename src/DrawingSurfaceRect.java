@@ -8,6 +8,11 @@ public class DrawingSurfaceRect extends PApplet
     private PlayerRect playerR;
 
     private boolean[] keys = new boolean[6];
+    private final int LEFT = 2;
+    private final int UP = 3;
+    private final int RIGHT = 4;
+    private final int DOWN = 5;
+
 
     /*
      * Set player's original tile to beginning tile Fix canMove() and stuff
@@ -63,57 +68,33 @@ public class DrawingSurfaceRect extends PApplet
     public void keyPressed()
     {
         if (key == 'b')
-        {
             keys[0] = true;
-        }
         if (key == 'e')
-        {
             keys[1] = true;
-        }
         if (this.keyCode == 37)
-        {
-            keys[2] = true;
-        }
+            keys[LEFT] = true;
         if (this.keyCode == 38)
-        {
-            keys[3] = true;
-        }
+            keys[UP] = true;
         if (this.keyCode == 39)
-        {
-            keys[4] = true;
-        }
+            keys[RIGHT] = true;
         if (this.keyCode == 40)
-        {
-            keys[5] = true;
-        }
+            keys[DOWN] = true;
     }
 
     public void keyReleased()
     {
         if (key == 'b')
-        {
             keys[0] = false;
-        }
         if (key == 'e')
-        {
             keys[1] = false;
-        }
         if (this.keyCode == 37)
-        {
-            keys[2] = false;
-        }
+            keys[LEFT] = false;
         if (this.keyCode == 38)
-        {
-            keys[3] = false;
-        }
+            keys[UP] = false;
         if (this.keyCode == 39)
-        {
-            keys[4] = false;
-        }
+            keys[RIGHT] = false;
         if (this.keyCode == 40)
-        {
-            keys[5] = false;
-        }
+            keys[DOWN] = false;
     }
 
     
@@ -121,19 +102,15 @@ public class DrawingSurfaceRect extends PApplet
     {
         int speed = 5;
         
-        if (keys[2] && canMove())
-        {
+        if (keys[LEFT] && canMove()) 
             playerR.setX(playerR.getX() - speed);
-        } else if (keys[3] && canMove())
-        {
+        if (keys[UP] && canMove()) 
             playerR.setY(playerR.getY() - speed);
-        } else if (keys[4] && canMove())
-        {
+        if (keys[RIGHT] && canMove()) 
             playerR.setX(playerR.getX() + speed);
-        } else if (keys[5] && canMove())
-        {
+        if (keys[DOWN] && canMove())
             playerR.setY(playerR.getY() + speed);
-        }
+       
             
     }
 
@@ -147,11 +124,29 @@ public class DrawingSurfaceRect extends PApplet
                 
                 if (element.overlaps(playerR) && element.isWall())
                 {
+//                    if (playerR.getX() < element.getX() + element.getWidth())
+//                    {
+//                        playerR.setX((int) (element.getX()));
+//                    }
+//                    if (playerR.getX() + playerR.getR() > element.getX())
+//                    {
+//                        playerR.setX((int) element.getX() - playerR.getR());
+//                    }
+//                    if (playerR.getY() + playerR.getHeight() > element.getY())
+//                    {
+//                        playerR.setY((int) (element.getY() - playerR.getHeight()));
+//                    }
+//                    if (playerR.getY() > element.getY() + element.getHeight())
+//                    {
+//                        playerR.setY((int) (element.getY() + element.getHeight()));
+//                    }
+                    
                     return false;
                 }
 
             }
         }
+        
         return true;
     }
 
